@@ -13,9 +13,11 @@ class ExploreOPD:
         self.preprocess = PreProcess()
 
     def get_path(self, path):
+        """ Updates the Path of PDF File """
         self.pdf_path = path
 
     def update_knowledge_base(self):
+        """ Updates Knowledge Base with Extracted Data """
         self.preprocess.extract_from_pdf(self.pdf_path)
 
 
