@@ -8,36 +8,35 @@ import os
 import pymupdf as fitz
 
 
-# Define Class for this Module
 class PreProcess:
     def __init__(self):
-        pass
+        self.knowledge_base = []
 
-    # Function to Format the Extracted Text
+    def append_to_knowledge_base(self, filename, page_number, text=None):
+        """ Add Extracted & Formatted Data to Knowledge Base """
+        self.knowledge_base.append({"filename": filename,
+                                    "page_number": page_number+1,
+                                    "text": text})
+
     def format_text(self, text):
+        """ Format the Extracted Text """
         text = text.replace("\n", " ").strip()
         text = text.replace("\t", " ").strip()
         return text
 
-
     def extract_from_pdf(self, doc_path):
+        """ Extract Contents from PDF and Store it with Metadata (Filename, Page Number, Content) """
         doc = fitz.open(doc_path, filetype="pdf")
-        doc_text_with_metadata = []
         filename = os.path.basename(doc_path)
         for page_number, page in enumerate(doc):
-            # Extract and Process Text on the Page
+            # Extract Text from the Page
             text = page.get_text()
             text = self.format_text(text)
-            # Store the Extracted Data
-            doc_text_with_metadata.append({"filename": filename,
-                                           "page_number": page_number+1,
-                                           "text": text})
-        return doc_text_with_metadata
+            self.append_to_knowledge_base(filename, page_number, text=text)
 
 
 if __name__ == "__main__":
     testrun = PreProcess()
     pdf_path = r"../SampleDocuments/SampleDoc.pdf"
-    doc_data = testrun.extract_from_pdf(pdf_path)
-    print(doc_data)
-
+    testrun.extract_from_pdf(pdf_path)
+    print(testrun.knowledge_base)
