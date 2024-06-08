@@ -20,9 +20,10 @@ class PreProcess:
 
     def format_text(self, text):
         """ Format the Extracted Text """
-        text = text.replace("\n", " ").strip()
-        text = text.replace("\t", " ").strip()
-        return text
+        text = text.replace('\n', ' ').strip()
+        sentences = text.split('. ')
+        sentences = [sentence.strip() for sentence in sentences]
+        return sentences
 
     def extract_from_pdf(self, doc_path):
         """ Extract Contents from PDF and Store it with Metadata (Filename, Page Number, Content) """
