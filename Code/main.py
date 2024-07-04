@@ -8,6 +8,7 @@ from preprocess import PreProcess
 from gui import GUI
 
 # Import Necessary Libraries
+from dotenv import load_dotenv
 from tkinter import filedialog
 
 
@@ -38,6 +39,7 @@ class ExploreOPD:
 
 
 if __name__ == "__main__":
+    load_dotenv()
     testrun = ExploreOPD()
     testrun.app()
     testrun.gui.start()
