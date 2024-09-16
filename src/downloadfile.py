@@ -5,10 +5,12 @@ import json
 class PDFDownloader:
     def __init__(self, url_dict):
         self.url_dict = url_dict
+        self.download_dir = "../DocumentCorpus"
+        os.makedirs(self.download_dir, exist_ok=True)
 
     def download_pdfs(self):
         for filename, url in self.url_dict.items():
-            pdf_path = os.path.join("../DocumentCorpus", filename)
+            pdf_path = os.path.join(self.download_dir, filename)
             if not os.path.exists(pdf_path):
                 response = requests.get(url)
                 if response.status_code == 200:
