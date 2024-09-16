@@ -31,7 +31,6 @@ def receive_download_urls(downloadurls: DownloadURLs):
 @app.post("/preprocesspdfs/")
 def preprocess_downloaded_pdfs():
     ''' PreProcess PDF Files to Extract Data and Metadata (Filename, PageNumber) '''
-    global knowledge_bases
     try:
         processor = PreProcess()
         download_dir = "../DocumentCorpus"
@@ -46,4 +45,3 @@ def preprocess_downloaded_pdfs():
         return {"message": "Files PreProcessed Successfully!"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
