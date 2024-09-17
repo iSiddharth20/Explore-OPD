@@ -3,7 +3,7 @@ import requests
 import json
 
 class PDFDownloader:
-    def __init__(self,download_dir, url_dict):
+    def __init__(self, download_dir, url_dict):
         self.url_dict = url_dict
         self.download_dir = download_dir
 
