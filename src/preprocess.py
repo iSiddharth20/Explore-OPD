@@ -38,6 +38,6 @@ class PreProcess:
 
 if __name__ == "__main__":
     testrun = PreProcess()
-    pdf_path = r"../SampleDocuments/SampleDoc.pdf"
+    pdf_path = r"../DocumentCorpus/fielding_dissertation.pdf"
     testrun.extract_from_pdf(pdf_path)
-    print(f"""For the File Path: "{pdf_path}",\nThe Knowledge Base is:\n{testrun.knowledge_base}""")
+    print(f"""For the File Path: "{pdf_path}",\nSlice of Knowledge Base is:\n{testrun.knowledge_base[0]}""")
