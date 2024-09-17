@@ -3,10 +3,9 @@ import requests
 import json
 
 class PDFDownloader:
-    def __init__(self, url_dict):
+    def __init__(self,download_dir, url_dict):
         self.url_dict = url_dict
-        self.download_dir = "../DocumentCorpus"
-        os.makedirs(self.download_dir, exist_ok=True)
+        self.download_dir = download_dir
 
     def download_pdfs(self):
         for filename, url in self.url_dict.items():
@@ -29,6 +28,8 @@ if __name__ == "__main__":
         "human_nutrition_text.pdf": "https://pressbooks.oer.hawaii.edu/humannutrition2/open/download?type=pdf"
     }
     '''
+    download_dir = "../DocumentCorpus"
+    os.makedirs(download_dir, exist_ok=True)
     url_dict = json.loads(json_input)
-    downloader = PDFDownloader(url_dict)
+    downloader = PDFDownloader(download_dir, url_dict)
     downloader.download_pdfs()
