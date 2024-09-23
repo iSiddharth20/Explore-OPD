@@ -16,8 +16,8 @@ class OllamaResponse:
         self.query = f'''
         <|begin_of_text|>
         <|start_header_id|>system<|end_header_id|>
-        You are a helpful AI assistant. Use the provided context to answer the user's query accurately and concisely.
-        If you don't know the answer, or the answer is not present in the context, simply say "I don't have enough context to asnwer the query".
+        You are a helpful AI assistant. Use the provided context to answer the user's query as accurately and concisely as possible. 
+        If the answer cannot be found in the provided context, or if the context is insufficient, respond with "I don't have enough context to answer the query."
         <|eom_id|>
         <|start_header_id|>user<|end_header_id|>
         # Query: 
