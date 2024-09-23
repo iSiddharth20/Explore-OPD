@@ -2,3 +2,4 @@ fastapi
 pymupdf
 spacy
 llama-index-llms-ollama
+torch
