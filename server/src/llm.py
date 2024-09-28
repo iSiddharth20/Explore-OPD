@@ -17,7 +17,7 @@ class OllamaResponse:
         <|begin_of_text|>
         <|start_header_id|>system<|end_header_id|>
         You are a helpful AI assistant. Use the provided context to answer the user's query as accurately and concisely as possible. 
-        If the answer cannot be found in the provided context, or if the context is insufficient, respond with "I don't have enough context to answer the query."
+        If the answer cannot be found in the provided context, or if the context is insufficient, respond just with "I don't have enough context to answer the query."
         <|eom_id|>
         <|start_header_id|>user<|end_header_id|>
         # Query: 
@@ -35,10 +35,19 @@ class OllamaResponse:
 
 
 if __name__ == '__main__':
-    test_run = OllamaResponse()
-    query = r"Hello! What is your name?"
-    test_run.get_query(query)
-    context = r"Your name is OllamaBot."
-    test_run.add_context_to_query(context)
-    test_run.get_response_from_ollama()
-    print(test_run.response)
+
+    query = r"What the favourite color of LLMs?"
+
+    test_run_1 = OllamaResponse()
+    context = r"The sun rises from East and sets in West."
+    test_run_1.get_query(query)
+    test_run_1.add_context_to_query(context)
+    test_run_1.get_response_from_ollama()
+    print(f'\nQuery    : {query} \nContext  : {context} \nResponse : {test_run_1.response}')
+
+    test_run_2 = OllamaResponse()
+    context = r"LLMs prefer the color Blue over all others."
+    test_run_2.get_query(query)
+    test_run_2.add_context_to_query(context)
+    test_run_2.get_response_from_ollama()
+    print(f'\nQuery    : {query} \nContext  : {context} \nResponse : {test_run_2.response}\n')
